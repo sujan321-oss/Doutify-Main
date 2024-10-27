@@ -98,8 +98,13 @@ const Expert = () => {
       );
 
       const data = await response.json();
-      alert(`Bid submitted successfully: ${bidAmount} USD`);
 
+      console.log("data is ",data)
+
+      if (data){
+        alert(`Bid submitted successfully: ${bidAmount} USD`);
+      }
+      
       setBids((prevBids) => ({ ...prevBids, [activeDoubt]: bidAmount }));
       setDoubts((prevDoubts) =>
         prevDoubts.filter((_, index) => index !== activeDoubt)

@@ -273,13 +273,17 @@ const finalTimenPrice = asyncHandler(async (req, res) => {
       return res.status(404).json({ error: "Doubt not found" });
     }
     if (doubt.status == "Doubt submitted")
+      console.log("soubt submitiing --")
       doubt.status = "Expert Options provided";
     await doubt.save();
-
-    res.status(200).send("Request send to the user..");
+     console.log("doubt submitted....")
+    return res.status(200).send(JSON.parse({msg : "Request send to the user.."}));
   } catch (e) {
     console.log("[E] Error in finalNotification", e);
   }
+
+  res.status(200).json({msg:"sucessfully sunmitted"})
+  
 });
 
 // @desc User selects the expert from the bidded list -------------------------------- Expert selection by User ----------------------------
